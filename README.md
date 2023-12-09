@@ -1,0 +1,1 @@
+This is a Cyber threat removal project in which you can check out any link is phished or not and in this project the tech stack used in HTML, CSS, Python, Django, Pyscript and some use of Javascript too and I used an algorithm of machine learning known as Logistics regression.
