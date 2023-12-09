@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishKavach</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <style>
+        body {
+            background-color: #002366; /* Dark blue background */
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #001f4d; /* Dark blue header background */
+            width: 100%;
+        }
+
+        #logo {
+            width: 4%;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #container {
+            text-align: center;
+            width: 100%;
+        }
+
+        #urlInput {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #checkButton {
+            padding: 10px 20px;
+            background-color: #009933; /* Green button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #checkButton:hover {
+            background-color: #008028; /* Darker green on hover */
+        }
+
+        #footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #001f4d; /* Dark blue footer background */
+            width: 100%;
+        }
+
+        #copyright {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        #output {
+            text-align: center;
+            display: none;
+            margin: 20px auto;
+            font-size: 24px; /* Increase font size */
+        }
+
+        .emoji {
+            font-size: 36px; /* Emoji font size */
+        }
+    </style>
+
+    <script>
+        // Function to submit the form when the Enter key is pressed
+        function submitFormOnEnter(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("checkButton").click();
+            }
+        }
+
+        function checkUrl() {
+            var urlInput = document.getElementById("urlInput").value;
+            var output = document.getElementById("output");
+
+            // Here, you can perform your URL checking logic.
+            // For demonstration, I'm showing a simple result message.
+            var isPhishing = false; // Replace this with your actual result.
+
+            if (isPhishing) {
+                output.innerHTML = `<span class="emoji">😨</span> This is a phishing URL.`;
+                output.style.color = "red"; // Red text for phishing URLs.
+            } else {
+                output.innerHTML = `<span class="emoji">😊</span> This is not a phishing URL.`;
+                output.style.color = "green"; // Green text for non-phishing URLs.
+            }
+
+            output.style.display = "block"; // Show the result message.
+
+            // Send a POST request to the server with the URL data
+            fetch('/check_url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: urlInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.isPhishing) {
+                    output.innerHTML = `<span class="emoji">😨</span> This is a phishing URL.`;
+                    output.style.color = "red";
+                } else {
+                    output.innerHTML = `<span class="emoji">😊</span> This is not a phishing URL.`;
+                    output.style.color = "green";
+                }
+                output.style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.23.2/full/pyodide.js"></script>
+    <script type="text/javascript">
+      async function main() {
+        const pyodide = await loadPyodide()
+        await pyodide.loadPackage("micropip");
+        const micropip = pyodide.pyimport("micropip");
+        await micropip.install("pandas");
+        await pyodide.runPython(`
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        `);
+      }
+    main();
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <py-script src="features.py"></py-script>
+    <div id="header">
+        <a href="https://www.youtube.com/results?search_query=codewithharry+python">
+        <img id="logo" src="logo-white.png" alt="PhishKavach Logo"> </a>
+        <h1>PhishKavach</h1>
+    </div>
+
+    <div id="container">
+        <input type="text" id="urlInput" placeholder="Type/Paste your URL/Link" onkeypress="submitFormOnEnter(event)">
+        <button id="checkButton" onclick="checkUrl()">Check</button>
+        <p id="techSupport"><a href="mailto:phishkavach09@gmail.com">Tech Support</a></p>
+        <div id="output">
+            <!-- Output message will be displayed here -->
+        </div>
+    </div>
+
+    <div id="footer">
+        <p id="copyright">&copy; 2023 PhishKavach - URL Phishing Checker</p>
+    </div>
+</body>
+</html>
