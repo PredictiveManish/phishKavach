@@ -54,4 +54,27 @@ python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
-3. 
+3. Running the application:
+```
+python app.py
+```
+
+## Model Overview
+- Vectorizer: ```TfidfVectorizer``` transforms URL text data into TF-IDF features.
+- Model: LogisticRegression is trained on the vectorized features.
+- Evaluation: Accuracy, precision, recall, and F1 score are calculated to assess performance.
+- Model Saving: The trained model is saved using joblib to model.pkl.
+
+
+## Future Improvements
+- Integrate real-time URL analysis using third-party threat intelligence APIs.
+- Add user authentication and history tracking.
+- Improve model accuracy with advanced NLP and deep learning.
+- Host the app on platforms like Heroku or Render.
+
+## Inspiration
+Cybersecurity is a growing concern with phishing being one of the most common threats. phishKavach aims to provide a simple, fast, and effective tool to detect such malicious links and raise awareness.
+
+``` Contributing
+Feel free to fork this repository and submit a pull request. Contributions, issues, and feature requests are welcome!
+```
