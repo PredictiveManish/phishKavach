@@ -6,7 +6,7 @@
 
 ## 🚀 Demo
 
-![Phishing Detection UI Screenshot](https://www.activestate.com/blog/phishing-url-detection-with-python-and-ml/)
+![Phishing Detection UI Screenshot](https://cdn.activestate.com/wp-content/uploads/2021/02/phishing-detection-with-Python.jpg)
 
 > 📌 Replace the image above with a screenshot or demo gif of your app once hosted.
 
