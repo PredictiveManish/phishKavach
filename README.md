@@ -35,3 +35,23 @@ phishKavach/
 │   └── index.html        # HTML frontend
 └── README.md             # Project documentation
 ```
+
+## Technologies Used:
+- Python (Flask, scikit-learn, pandas, joblib)
+- Machine Learning (Logistic Regression, TF-IDF Vectorization)
+- Frontend: HTML, JavaScript (Fetch API)
+- Data: Phishing dataset (phishing_detection.csv)
+
+# Setup instructions
+1. Clone the repository:
+```
+git clone https://github.com/your-username/phishKavach.git
+cd phishKavach
+```
+2. Create a virtual environment and install dependencies:
+```
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+3. 
