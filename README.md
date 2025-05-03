@@ -1,2 +1,37 @@
-This is a Cyber threat detector project in which you can check out any link is phished or not and in this project the tech stack used in HTML, CSS, Python, Django, Pyscript and some use of Javascript too and I used an algorithm of machine learning known as Logistics regression. Dataset was taken from Kaggle.com.
-In this project the main thing which is done is that it is a pre trained model which can learn through a dataset of lakhs of links and various things and judge the mistakes and differences between original/authentic or safe things and the embedded/ threat based links or messages.
+# 🛡️ phishKavach - Phishing URL Detection Web App
+
+**phishKavach** is a machine learning-based web application that detects whether a given URL is potentially malicious (phishing) or safe. It uses Natural Language Processing (NLP) and a logistic regression classifier to analyze URLs and classify them accurately.
+
+---
+
+## 🚀 Demo
+
+![Phishing Detection UI Screenshot](https://via.placeholder.com/800x400.png?text=Demo+UI+Screenshot)
+
+> 📌 Replace the image above with a screenshot or demo gif of your app once hosted.
+
+---
+
+## 🧠 How It Works
+
+1. **Input**: User enters a URL in the web interface.
+2. **Processing**: The backend uses a pre-trained Logistic Regression model to analyze the input.
+3. **Prediction**: The model predicts whether the URL is phishing or safe.
+4. **Output**: The result is returned and displayed on the page dynamically using JavaScript.
+
+---
+
+## 🗂️ Project Structure
+
+```bash
+phishKavach/
+├── app.py                # Main Flask server
+├── model.pkl             # Pre-trained phishing detection model
+├── phishing_detection.csv # Dataset used for training
+├── features.py           # Model training and evaluation script
+├── static/
+│   └── script.js         # JavaScript to handle frontend logic
+├── templates/
+│   └── index.html        # HTML frontend
+└── README.md             # Project documentation
+```
